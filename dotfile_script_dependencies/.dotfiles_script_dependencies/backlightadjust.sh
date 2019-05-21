@@ -24,4 +24,4 @@ else
   new_brightness=$adjusted_brightness
 fi
 
-echo $new_brightness > /sys/class/backlight/intel_backlight/brightness
+echo $new_brightness > /sys/class/backlight/*/brightness
