@@ -177,8 +177,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec ~/dotfile_script_dependencies/backlightadjust.sh + 
-bindsym XF86MonBrightnessDown exec ~/dotfile_script_dependencies/backlightadjust.sh -
+bindsym XF86MonBrightnessUp exec ~/.dotfile_script_dependencies/backlightadjust.sh + 
+bindsym XF86MonBrightnessDown exec ~/.dotfile_script_dependencies/backlightadjust.sh -
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
