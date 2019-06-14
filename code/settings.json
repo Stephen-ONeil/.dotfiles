@@ -1,6 +1,6 @@
 {
   "window.menuBarVisibility": "toggle",
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
 
   "editor.autoClosingBrackets": "never",
   "editor.useTabStops": true,
