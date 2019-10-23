@@ -1,14 +1,12 @@
-export PATH="$PATH:$HOME/scripts"
-export TERM=xterm-256color
-export SUDO_EDITOR=vim
+# steps common to bashrc and bash_prompt
 
-if [ -n "$DISPLAY" ] || [ -n "$TMUX" ]; then
-  export TMOUT=0
-else
-  export TMOUT=60
-fi 
+export PATH="$PATH:$HOME/scripts"
+export SUDO_EDITOR=vim
 
 shopt -s globstar
 shopt -s extglob
 
 [ -r ~/.bash_prompt ] && [ -f ~/.bash_prompt ] && source ~/.bash_prompt;
+
+# if it exists, also get settings from a system-specific file (stored in system specific stow dirs)
+[ -f ~/.system_specific_bash_setup ] && source ~/.system_specific_bash_setup
