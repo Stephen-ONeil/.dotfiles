@@ -8,4 +8,3 @@ for SCRIPT in wifi battery date; do
     "$DIRNAME/${SCRIPT}.sh"
     FIRST='false'
 done
-

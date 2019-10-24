@@ -18,5 +18,3 @@ else
     SSID=$(echo "$INFO" | awk '/[^B]SSID/ {print $NF}')
     echo "$SSID ${QUALITY}%"
 fi
-
-
