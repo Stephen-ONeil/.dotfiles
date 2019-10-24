@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# echo -n "@$(basename "$0" | sed -E 's/.{3}$//')@ "
-echo -n '@wifi@ '
-
 INFO="$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --getinfo)"
 
 if [[ "$INFO" == 'AirPort: Off' ]]; then
@@ -19,8 +16,7 @@ else
         QUALITY=$(echo "2 * ($DBM + 100)" | bc -l)
     fi
     SSID=$(echo "$INFO" | awk '/[^B]SSID/ {print $NF}')
-    IP=$(ifconfig en0 inet | awk '/inet/ {print $2}')
-    echo "$IP $SSID ${QUALITY}%"
+    echo "$SSID ${QUALITY}%"
 fi
 
 
