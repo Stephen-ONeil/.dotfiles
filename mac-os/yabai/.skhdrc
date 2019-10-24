@@ -42,9 +42,6 @@ cmd + alt - n : yabai -m space --create && \
                 index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
                 yabai -m space --focus "${index}"
 
-# destroy desktop
-cmd + shift - w : yabai -m space --destroy
-
 # fast focus desktop
 cmd - 1 : yabai -m space --focus 1
 cmd - 2 : yabai -m space --focus 2
@@ -145,11 +142,13 @@ alt - p : yabai -m window --toggle sticky;\
 ctrl + alt - a : yabai -m space --layout bsp
 ctrl + alt - d : yabai -m space --layout float
 
+# close  window
+cmd - q : yabai -m window --close
+# close windows in space then destory it
+cmd + shift - q : $HOME/.skhdrc-scripts/destroy_space_and_kill_windows.sh
 
-# blackhole some OS window management hotkeys
-ctrl - left :
-ctrl - right :
-ctrl - down :
+# blackhole some OS window management hotkeys that have messsed me/yabai up in the past
 cmd - tab :
 cmd - m :
 cmd - h :
+cmd - w :
