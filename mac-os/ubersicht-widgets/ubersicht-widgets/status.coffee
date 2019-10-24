@@ -8,14 +8,14 @@ render: (output) ->
   """
 
 style: """
-  font-family: monaco
-  font-size: 11px
-  color: #bebebe;
   right: 18px
   top: 8px
   height: 13
+
+  font-family: menlo
+  font-size: 14px
+  color: #bebebe;
   """
 
 update: (output, domEl) ->
-  output = output.replace /@.*?@/g, (match) -> "<i class='fas fa-" + (match.replace /@/g, '') + "'></i>"
   $(domEl).find('.status').html(output)

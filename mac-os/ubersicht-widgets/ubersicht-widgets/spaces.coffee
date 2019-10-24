@@ -32,9 +32,10 @@ render: (output) ->
 style: """
   position: relative
   margin-top: 7px
-  font: 14px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
-  color: #aaa
-  font-weight: 700
+  
+  font-family: menlo
+  font-size: 14px
+  color: #bebebe
 
   ul
     list-style: none
@@ -48,8 +49,8 @@ style: """
     margin: 0 0.5em
 
   li.visible
-    color: #ededed
-    border-bottom: 2px solid #ededed
+    color: #fff
+    border-bottom: 2px solid #fff
 """
 
 update: (output, domEl) ->
