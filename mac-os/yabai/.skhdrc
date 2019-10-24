@@ -70,9 +70,6 @@ shift + cmd - 9 : yabai -m window --space  9
 shift + cmd - 0 : yabai -m window --space 10
 
 # focus monitor
-ctrl + alt - x  : yabai -m display --focus recent
-ctrl + alt - z  : yabai -m display --focus prev
-ctrl + alt - c  : yabai -m display --focus next
 ctrl + alt - 1  : yabai -m display --focus 1
 ctrl + alt - 2  : yabai -m display --focus 2
 ctrl + alt - 3  : yabai -m display --focus 3
@@ -147,3 +144,12 @@ alt - p : yabai -m window --toggle sticky;\
 # change layout of desktop
 ctrl + alt - a : yabai -m space --layout bsp
 ctrl + alt - d : yabai -m space --layout float
+
+
+# blackhole some OS window management hotkeys
+ctrl - left :
+ctrl - right :
+ctrl - down :
+cmd - tab :
+cmd - m :
+cmd - h :
