@@ -1,5 +1,7 @@
 export TERM=xterm-256color
 
+shopt -s globstar
+
 if [ -n "$DISPLAY" ] || [ -n "$TMUX" ]; then
   export TMOUT=0
 else

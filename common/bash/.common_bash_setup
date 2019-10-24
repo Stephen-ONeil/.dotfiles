@@ -3,7 +3,6 @@
 export PATH="$PATH:$HOME/scripts"
 export SUDO_EDITOR=vim
 
-shopt -s globstar
 shopt -s extglob
 
 [ -r ~/.bash_prompt ] && [ -f ~/.bash_prompt ] && source ~/.bash_prompt;
