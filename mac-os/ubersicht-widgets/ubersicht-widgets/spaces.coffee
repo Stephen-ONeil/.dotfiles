@@ -50,7 +50,9 @@ style: """
 
   li.visible
     color: #fff
-    border-bottom: 2px solid #fff
+
+  li.focused
+    border-bottom: 3px solid #1a73e8
 """
 
 update: (output, domEl) ->
@@ -60,5 +62,8 @@ update: (output, domEl) ->
     $(domEl).find('ul').html(@generateIcons(spaces))
   else
     $(domEl).find('li.visible').removeClass('visible')
+    $(domEl).find('li.focused').removeClass('focused')
   for space in spaces when space['visible'] == 1
     $(domEl).find("li#desktop#{space['index']}").addClass('visible')
+  for space in spaces when space['focused'] == 1
+    $(domEl).find("li#desktop#{space['index']}").addClass('focused')
