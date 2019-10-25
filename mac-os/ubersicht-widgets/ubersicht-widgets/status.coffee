@@ -1,21 +1,18 @@
-command: "./code/status.sh"
+command: "./statuses/statuses.sh"
 
 refreshFrequency: 10000
 
 render: (output) ->
   """
-  <div class="status"></div>
+  <link rel="stylesheet" type="text/css" href="status.css">
+  <div class="statuses"></div>
   """
 
 style: """
   right: 18px
   top: 8px
-  height: 13
-
-  font-family: menlo
-  font-size: 14px
-  color: #bebebe;
+  height: 13px
   """
 
 update: (output, domEl) ->
-  $(domEl).find('.status').html(output)
+  $(domEl).find('.statuses').html(output)

@@ -1,0 +1,20 @@
+.statuses {
+  font-family: menlo;
+  font-size: 14px;
+  color: #fff;
+}
+
+.status-seperator {
+  color: #9c9c9c;
+}
+
+/* i3status colour defaults */
+.good {
+  color: #00FF00;
+}
+.degraded {
+  color: #FFFF00;
+}
+.bad {
+  color: #FF0000;
+}

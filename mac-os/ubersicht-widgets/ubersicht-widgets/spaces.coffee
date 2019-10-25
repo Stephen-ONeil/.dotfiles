@@ -35,7 +35,7 @@ style: """
   
   font-family: menlo
   font-size: 14px
-  color: #bebebe
+  color: #9c9c9c
 
   ul
     list-style: none
