@@ -143,6 +143,7 @@ cmd + shift - q : yabai -m window --close
 cmd + shift - escape : $HOME/.skhdrc-scripts/destroy_space_and_kill_windows.sh
 
 # blackhole some OS window management hotkeys that have messsed me/yabai up in the past
+cmd - q :
 cmd - left :
 cmd - right :
 cmd - tab :
