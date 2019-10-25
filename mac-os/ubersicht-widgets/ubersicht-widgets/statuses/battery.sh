@@ -17,10 +17,10 @@ else
     AC_INDICATOR="-"
     TIME_REMAINING=", $(echo "$BATTERY" | grep -oE '[^ ]* remaining' | tr -d [remaining])"
 
-    if [[ "$PERCENT" -lt 30 ]]; then
-        status_class="degraded"
-    elif [[ "$PERCENT" -lt 20 ]]; then
+    if [[ "$PERCENT" -le 20 ]]; then
         status_class="bad"
+    elif [[ "$PERCENT" -le 30 ]]; then
+        status_class="degraded"
     fi
 fi
 
