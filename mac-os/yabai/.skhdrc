@@ -31,18 +31,19 @@ shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
 # make floating window fill right-half of screen
 shift + alt - right  : yabai -m window --grid 1:2:1:0:1:1
 
-# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+# create space, move window and follow focus - uses jq for parsing json (brew install jq)
 shift + cmd - n : yabai -m space --create && \
                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
                   yabai -m window --space "${index}" && \
-                  yabai -m space --focus "${index}"
+                  yabai -m space --focus "${index}" 
+                  
 
-# create desktop and follow focus - uses jq for parsing json (brew install jq)
+# create space and follow focus - uses jq for parsing json (brew install jq)
 cmd + alt - n : yabai -m space --create && \
                 index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
                 yabai -m space --focus "${index}"
 
-# fast focus desktop
+# fast focus space
 cmd - 1 : yabai -m space --focus 1
 cmd - 2 : yabai -m space --focus 2
 cmd - 3 : yabai -m space --focus 3
@@ -54,17 +55,17 @@ cmd - 8 : yabai -m space --focus 8
 cmd - 9 : yabai -m space --focus 9
 cmd - 0 : yabai -m space --focus 10
 
-# send window to desktop
-shift + cmd - 1 : yabai -m window --space  1
-shift + cmd - 2 : yabai -m window --space  2
-shift + cmd - 3 : yabai -m window --space  3
-shift + cmd - 4 : yabai -m window --space  4
-shift + cmd - 5 : yabai -m window --space  5
-shift + cmd - 6 : yabai -m window --space  6
-shift + cmd - 7 : yabai -m window --space  7
-shift + cmd - 8 : yabai -m window --space  8
-shift + cmd - 9 : yabai -m window --space  9
-shift + cmd - 0 : yabai -m window --space 10
+# send window to space, if that leaves the current space empty than delete it and follow the moved window
+shift + cmd - 1 : $HOME/.skhdrc-scripts/custom_move_window.sh 1
+shift + cmd - 2 : $HOME/.skhdrc-scripts/custom_move_window.sh 2
+shift + cmd - 3 : $HOME/.skhdrc-scripts/custom_move_window.sh 3
+shift + cmd - 4 : $HOME/.skhdrc-scripts/custom_move_window.sh 4
+shift + cmd - 5 : $HOME/.skhdrc-scripts/custom_move_window.sh 5
+shift + cmd - 6 : $HOME/.skhdrc-scripts/custom_move_window.sh 6
+shift + cmd - 7 : $HOME/.skhdrc-scripts/custom_move_window.sh 7
+shift + cmd - 8 : $HOME/.skhdrc-scripts/custom_move_window.sh 8
+shift + cmd - 9 : $HOME/.skhdrc-scripts/custom_move_window.sh 9
+shift + cmd - 0 : $HOME/.skhdrc-scripts/custom_move_window.sh 10
 
 # focus monitor
 ctrl + alt - 1  : yabai -m display --focus 1
@@ -103,7 +104,7 @@ alt - y : yabai -m space --mirror y-axis
 # mirror tree x-axis
 alt - x : yabai -m space --mirror x-axis
 
-# toggle desktop offset
+# toggle space offset
 alt - a : yabai -m space --toggle padding; yabai -m space --toggle gap
 
 # toggle window parent zoom
@@ -132,7 +133,7 @@ alt - s : yabai -m window --toggle sticky
 alt - p : yabai -m window --toggle sticky;\
           yabai -m window --grid 5:5:4:0:1:1
 
-# change layout of desktop
+# change layout of space
 ctrl + alt - a : yabai -m space --layout bsp
 ctrl + alt - d : yabai -m space --layout float
 
@@ -142,6 +143,8 @@ cmd - q : yabai -m window --close
 cmd + shift - q : $HOME/.skhdrc-scripts/destroy_space_and_kill_windows.sh
 
 # blackhole some OS window management hotkeys that have messsed me/yabai up in the past
+cmd - left :
+cmd - right :
 cmd - tab :
 cmd - m :
 cmd - h :
