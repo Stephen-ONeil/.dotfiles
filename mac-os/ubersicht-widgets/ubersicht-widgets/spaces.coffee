@@ -30,11 +30,14 @@ render: (output) ->
   """
 
 style: """
+  font-family: menlo
+  font-size: 14px
+  font-weight: 600;
+  -webkit-font-smoothing: antialiased;
+
   position: relative
   margin-top: 7px
   
-  font-family: menlo
-  font-size: 14px
   color: #9c9c9c
 
   ul
