@@ -1,32 +1,32 @@
 #!/bin/bash
 
-INFO="$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --getinfo)"
+info="$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --getinfo)"
 
-if [[ "$INFO" == 'AirPort: Off' ]]; then
-    status="off"
-    status_class="bad"
-elif [[ "$(echo "$INFO" | awk '/state:/ {print $2}')" == 'init' ]]; then
-    status="disconnected"
-    status_class="bad"
+if [[ "$info" == 'AirPort: Off' ]]; then
+  status="off"
+  status_class="bad"
+elif [[ "$(echo "$info" | awk '/state:/ {print $2}')" == 'init' ]]; then
+  status="disconnected"
+  status_class="bad"
 else
-    DBM=$(echo "$INFO" | awk '/agrCtlRSSI/ {print $NF}')
-    if [[ "$DBM" -le -100 ]]; then
-        QUALITY=0
-    elif [[ "$DBM" -ge -50 ]]; then
-        QUALITY=100
-    else
-        QUALITY=$(echo "2 * ($DBM + 100)" | bc -l)
-    fi
-    SSID=$(echo "$INFO" | awk '/[^B]SSID/ {print $NF}')
-    
-    status="${QUALITY}% at $SSID"
-    if [[ $QUALITY -le 60 ]]; then
-        status_class="degraded"
-    elif [[ $QUALITY -le 30 ]]; then
-        status_class="bad"
-    else
-        status_class="good"
-    fi
+  dbm=$(echo "$info" | awk '/agrCtlRSSI/ {print $NF}')
+  if [[ "$dbm" -le -100 ]]; then
+    quality=0
+  elif [[ "$dbm" -ge -50 ]]; then
+    quality=100
+  else
+    quality=$(echo "2 * ($dbm + 100)" | bc -l)
+  fi
+  ssid=$(echo "$info" | awk '/[^B]SSID/ {print $NF}')
+  
+  status="${quality}% at $ssid"
+  if [[ $quality -le 60 ]]; then
+    status_class="degraded"
+  elif [[ $quality -le 30 ]]; then
+    status_class="bad"
+  else
+    status_class="good"
+  fi
 fi
 
 echo "<span class='$status_class'>( $status )</span>"

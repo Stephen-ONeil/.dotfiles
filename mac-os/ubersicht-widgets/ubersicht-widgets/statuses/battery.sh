@@ -1,33 +1,33 @@
 #!/bin/sh
 
-BATTERY=$(pmset -g batt)
+battery=$(pmset -g batt)
 
-PERCENT=$(echo "$BATTERY" | grep -oE '\d*%' | tr -d '%')
-PERCENT_DISPLAY="$PERCENT%"
+percent=$(echo "$battery" | grep -oE '\d*%' | tr -d '%')
+percent_display="$percent%"
 
-SOURCE=$(echo "$BATTERY" | grep -oE "'.*?'" | sed -E "s/'(.*) Power'/\1/")
-if [[ "$SOURCE" == 'AC' ]]; then
-    AC_INDICATOR="+"
+source=$(echo "$battery" | grep -oE "'.*?'" | sed -E "s/'(.*) Power'/\1/")
+if [[ "$source" == 'AC' ]]; then
+  ac_indicator="+"
 
-    if [[ "$PERCENT" -ge 85 ]]; then
-        status_class="good"
-    fi
+  if [[ "$percent" -ge 85 ]]; then
+    status_class="good"
+  fi
 else
-    AC_INDICATOR="-"
+  ac_indicator="-"
 
-    if [[ "$PERCENT" -le 20 ]]; then
-        status_class="bad"
-    elif [[ "$PERCENT" -le 30 ]]; then
-        status_class="degraded"
-    fi
+  if [[ "$percent" -le 20 ]]; then
+    status_class="bad"
+  elif [[ "$percent" -le 30 ]]; then
+    status_class="degraded"
+  fi
 fi
 
 # either time remaining to full charge or time remaining on current charge. Also often 0:00 or not available 
-TIME_REMAINING="$(echo "$BATTERY" | grep -oE '[^ ]* remaining' | tr -d [" "remaining])"
-if [[ $TIME_REMAINING == "" || $TIME_REMAINING == "0:00" ]]; then
-    TIME_REMAINING_DISPLAY="no estimate"
+time_remaining="$(echo "$battery" | grep -oE '[^ ]* remaining' | tr -d [" "remaining])"
+if [[ $time_remaining == "" || $time_remaining == "0:00" ]]; then
+  time_remaining_display="no estimate"
 else
-    TIME_REMAINING_DISPLAY=$TIME_REMAINING
+  time_remaining_display=$time_remaining
 fi
 
-echo "<span class='$status_class'>[ ${AC_INDICATOR}${PERCENT_DISPLAY}, ${TIME_REMAINING_DISPLAY} ]</span>"
+echo "<span class='$status_class'>[ ${ac_indicator}${percent_display}, ${time_remaining_display} ]</span>"
