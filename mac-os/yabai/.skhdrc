@@ -138,9 +138,9 @@ ctrl + alt - a : yabai -m space --layout bsp
 ctrl + alt - d : yabai -m space --layout float
 
 # close  window
-cmd - q : yabai -m window --close
+cmd + shift - q : yabai -m window --close
 # close windows in space then destory it
-cmd + shift - q : $HOME/.skhdrc-scripts/destroy_space_and_kill_windows.sh
+cmd + shift - escape : $HOME/.skhdrc-scripts/destroy_space_and_kill_windows.sh
 
 # blackhole some OS window management hotkeys that have messsed me/yabai up in the past
 cmd - left :
