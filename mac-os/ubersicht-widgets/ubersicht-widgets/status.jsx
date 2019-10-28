@@ -64,8 +64,8 @@ const get_battery_status_class = (charge_percent, charging) => {
   }
 };
 const get_battery_time_remaining = (battery_info) => {
-  const reported_time_remaining = (/; ([^ ]*) remaining;/.exec(battery_info) || ["",""])[1];
-  if (reported_time_remaining === "" || $time_remaining == "0:00") {
+  const reported_time_remaining = (/; ([^ ]*) remaining/.exec(battery_info) || ["",""])[1];
+  if (reported_time_remaining === "" || reported_time_remaining === "0:00") {
     return "no estimate";
   } else {
     return reported_time_remaining;
