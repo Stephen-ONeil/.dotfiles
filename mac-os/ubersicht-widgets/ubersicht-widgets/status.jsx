@@ -9,8 +9,8 @@ export const className = css`
 `;
 
 
-const wifi_off = (wifi_info) => /AirPort:off/.test(wifi_info);
-const wifi_disconnected = (wifi_info) => /state:init/.test(wifi_info);
+const is_wifi_off = (wifi_info) => /AirPort:off/.test(wifi_info);
+const is_wifi_disconnected = (wifi_info) => /state:init/.test(wifi_info);
 const get_wifi_quality = (wifi_info) => {
   const received_signal_strength = +(/agrCtlRSSI:([^;]+)/.exec(wifi_info)[1]);
 
@@ -36,9 +36,9 @@ const get_wifi_status_class = (quality) => {
 const get_wifi_ssid = (wifi_info) => /[^B]SSID:([^;]+)/.exec(wifi_info)[1];
 
 const WifiStatus = ({wifi_info}) => {
-  if ( wifi_off(wifi_info) ){
+  if ( is_wifi_off(wifi_info) ){
     return <span className="bad">( off )</span>;
-  } else if( wifi_disconnected(wifi_info) ){
+  } else if( is_wifi_disconnected(wifi_info) ){
     return <span className="bad">( disconnected )</span>;
   } else {
     const quality = +( get_wifi_quality(wifi_info) );
@@ -47,6 +47,44 @@ const WifiStatus = ({wifi_info}) => {
 
     return <span className={status_class}>{`( ${quality}% at ${ssid} )`}</span>;
   }
+};
+
+
+const is_battery_charging = (battery_info) => /'AC Power'/.test(battery_info);
+const get_battery_charge_percent = (battery_info) => /(\d*)%/.exec(battery_info)[1];
+const get_battery_status_class = (charge_percent, charging) => {
+  if ( charging && charge_percent >= 85 ){
+    return "good";
+  } else if ( !charging && charge_percent <= 20 ){
+    return "bad";
+  } else if ( !charging && charge_percent <= 30 ){
+    return "degraded";
+  } else {
+    return "";
+  }
+};
+const get_battery_time_remaining = (battery_info) => {
+  const reported_time_remaining = (/; ([^ ]*) remaining;/.exec(battery_info) || ["",""])[1];
+  if (reported_time_remaining === "" || $time_remaining == "0:00") {
+    return "no estimate";
+  } else {
+    return reported_time_remaining;
+  }
+};
+const BatteryStatus = ({battery_info}) => {
+  const battery_is_charging = is_battery_charging(battery_info);
+
+  const charge_percent = get_battery_charge_percent(battery_info);
+
+  const status_class = get_battery_status_class(charge_percent, battery_is_charging);
+
+  const time_remaining = get_battery_time_remaining(battery_info);
+  
+  return (
+    <span className={status_class}>
+      {`[ ${battery_is_charging ? '+' : '-'}${charge_percent}%, ${time_remaining} ]`}
+    </span>
+  );
 };
 
 
@@ -63,7 +101,7 @@ export const render = ({ output }) => {
     <div>
       <link rel="stylesheet" type="text/css" href="status.css" />
       <div class="statuses">
-        {battery_info}
+        <BatteryStatus battery_info={battery_info} />
         <StatusSeparator />
         <WifiStatus wifi_info={wifi_info} />
         <StatusSeparator />
