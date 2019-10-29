@@ -40,11 +40,16 @@ export const render = ({ output }) => {
   return (
     <ul className={yabaiSpaceList}>
       { spaces.map(
-        ({index, visible, focused}) => (
-        <li className={`${yabaiSpace} ${visible && yabaiSpaceVisible} ${focused && yabaiSpaceFocused}`}>
-          {index}
-        </li>
-        )
+        ({id, index: yabai_index, display, visible, focused}, ix) => [
+          ix > 0 && display !== spaces[ix-1].display && ( // indicate display change with marker placed before first space on new display
+            <li key={`display-${display}-separator`} className={yabaiSpace}>
+              -
+            </li>
+          ),
+          <li key={id} className={`${yabaiSpace} ${visible && yabaiSpaceVisible} ${focused && yabaiSpaceFocused}`}>
+            {yabai_index}
+          </li>,
+        ]
       )}
     </ul>
   );
