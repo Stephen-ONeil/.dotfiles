@@ -9,4 +9,4 @@ Collection of my misc. dotfiles from multiple systems. Symlinks managed locally 
   - `./arch-linux/`: dotfiles specific to my XPS 13\* Arch Linux setup
   - `./arch-linux/`: dotfiles specific to my MacOS setup
 
-\* the hardware's relevant, I've got some odd and poorly document things like a custom keyboard backlight script because I disabled legacy boot which had a side effect of breaking the XPS 13's specific backlight controls. Isolating or at least documenting these particularily system specifc choices is a TODO (...but don't  wait up on me actually doing it until my next fresh Arch Linux install).
+\* the hardware's relevant, I've got some odd and poorly documented things. For example, a script for managing my monitor backlight because when I disabled legacy boot it had the side effect of breaking the XPS 13's specific backlight controls. Isolating or at least documenting these particularily system specifc choices is a TODO (...but don't  wait up on me actually doing it until my next fresh Arch Linux install).
