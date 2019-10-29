@@ -15,11 +15,16 @@ const get_battery_status_class = (charge_percent, charging) => {
 };
 
 const get_battery_time_remaining = (battery_info) => {
-  const reported_time_remaining = (/; ([^ ]*) remaining/.exec(battery_info) || ["",""])[1];
-  if (reported_time_remaining === "" || reported_time_remaining === "0:00") {
+  const time_remaining_match = /; ([^ ]*) remaining/.exec(battery_info);
+
+  // Before time remaining is calculated, `pmset -g batt` returns "no estimate" instead of "N:NN remaining", in which case the above regex returns null
+  // ... except sometimes it reports "0:00 remaining" for a couple seconds, which is also a "no estimate" case
+  const no_estimate = !time_remaining_match || time_remaining_match[1] === "0:00";
+
+  if ( no_estimate) {
     return "no estimate";
   } else {
-    return reported_time_remaining;
+    return time_remaining_match[1];
   }
 };
 
