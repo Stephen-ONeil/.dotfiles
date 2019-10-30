@@ -142,6 +142,12 @@ cmd + shift - q : yabai -m window --close
 # close windows in space then destory it
 cmd + shift - escape : $HOME/.skhdrc-scripts/destroy_space_and_kill_windows.sh
 
+# screen clip
+cmd + fn - s : screencapture -ci
+
+# spotlight, rebinding to same key as dmenu_run in my arch-linux
+cmd - d : osascript -e 'tell application "System Events" to keystroke " " using {command down}'
+
 # blackhole some OS window management hotkeys that have messsed me/yabai up in the past
 cmd - q :
 cmd - left :
