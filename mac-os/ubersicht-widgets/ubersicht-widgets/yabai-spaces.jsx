@@ -35,6 +35,10 @@ const yabaiSpaceFocused = css`
 `;
 
 export const render = ({ output }) => {
+  if (!output){
+    return null;
+  }
+
   const spaces = JSON.parse(output);
 
   return (

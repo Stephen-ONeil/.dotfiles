@@ -14,6 +14,10 @@ export const className = css`
 `;
 
 export const render = ({ output }) => {
+  if (!output){
+    return null;
+  }
+  
   const {
     battery_info,
     wifi_info,
@@ -23,7 +27,7 @@ export const render = ({ output }) => {
   return (
     <div>
       <link rel="stylesheet" type="text/css" href="status/status.css" />
-      <div class="statuses">
+      <div className="statuses">
         <BatteryStatus battery_info={battery_info} />
         <StatusSeparator />
         <WifiStatus wifi_info={wifi_info} />
