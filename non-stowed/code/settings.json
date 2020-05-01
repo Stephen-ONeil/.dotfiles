@@ -1,12 +1,21 @@
 {
-  "window.menuBarVisibility": "toggle",
-  "window.zoomLevel": 1,
-
+  // Personal preference settings
   "editor.autoClosingBrackets": "never",
   "editor.useTabStops": true,
   "editor.tabSize": 2,
   "editor.renderIndentGuides": true,
-  
+  "editor.autoClosingQuotes": "never",
+  "editor.autoSurround": "never",
+
+  "javascript.autoClosingTags": false,
+  "typescript.autoClosingTags": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+
+  // Helps with VS Code blowing up the CPU on Macs
+  "files.useExperimentalFileWatcher": true,
   "files.exclude": {
     "/.git": true,
     "/.DS_Store": true,
@@ -15,16 +24,10 @@
   },
   "files.watcherExclude": {
     "**/node_modules/": true,
+    "**/mongo/db": true,
   },
   "search.exclude": {
-    "**/node_modules": true
+    "**/node_modules": true,
+    "**/mongo/db": true,
   },
-  "workbench.editor.enablePreview": false,
-  "workbench.editor.enablePreviewFromQuickOpen": false,
-
-  "javascript.autoClosingTags": false,
-  "typescript.autoClosingTags": false,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "editor.autoClosingQuotes": "never",
-  "editor.autoSurround": "never",
 }
