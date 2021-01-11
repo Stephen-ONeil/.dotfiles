@@ -1,8 +1,22 @@
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/Applications/Postgres.app/Contents/Versions/9.6/bin"
+export PATH="/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:"
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# MacPorts Installer addition on 2020-09-04_at_13:48:20: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
 [ -f "$HOME/google-cloud-sdk/path.bash.inc" ] && source "$HOME/google-cloud-sdk/path.bash.inc"
 # The next line enables shell command completion for gcloud.
 [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ] && source "$HOME/google-cloud-sdk/completion.bash.inc"
+# Lock GCloud to system python (2.7), pyenv plays hell with it otherwise 
+export CLOUDSDK_PYTHON=/usr/bin/python
+
+export NVM_DIR="$HOME/.nvm"
+[ ! -d $NVM_DIR ] && mkdir $NVM_DIR
+source $(brew --prefix nvm)/nvm.sh
+
+# Using pyenv to manage python versions
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
