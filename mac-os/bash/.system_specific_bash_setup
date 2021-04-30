@@ -12,9 +12,10 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Lock GCloud to system python (2.7), pyenv plays hell with it otherwise 
 export CLOUDSDK_PYTHON=/usr/bin/python
 
-export NVM_DIR="$HOME/.nvm"
-[ ! -d $NVM_DIR ] && mkdir $NVM_DIR
-source $(brew --prefix nvm)/nvm.sh
+# nvm adds weight to shell start up, comment out when not necessary
+#export NVM_DIR="$HOME/.nvm"
+#[ ! -d $NVM_DIR ] && mkdir $NVM_DIR
+#source $(brew --prefix nvm)/nvm.sh
 
 # Using pyenv to manage python versions
 if command -v pyenv 1>/dev/null 2>&1; then
