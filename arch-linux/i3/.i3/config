@@ -134,12 +134,18 @@ bindsym $mod+Shift+less move container to output down
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exit
-# lock screen and suspend
-bindsym $mod+Shift+s exec i3lock && systemctl suspend 
+
+# lock screen and suspend in to hibernate
+bindsym $mod+Shift+s exec i3lock && systemctl suspend-then-hibernate
+
+# lock screen and hibernate
+bindsym $mod+Shift+h exec i3lock && systemctl hibernate
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
