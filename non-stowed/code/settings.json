@@ -30,4 +30,6 @@
     "**/node_modules": true,
     "**/mongo/db": true,
   },
+  "window.menuBarVisibility": "toggle",
+  "redhat.telemetry.enabled": false,
 }
