@@ -3,7 +3,6 @@
   "editor.autoClosingBrackets": "never",
   "editor.useTabStops": true,
   "editor.tabSize": 2,
-  "editor.renderIndentGuides": true,
   "editor.autoClosingQuotes": "never",
   "editor.autoSurround": "never",
 
@@ -20,16 +19,22 @@
     "/.git": true,
     "/.DS_Store": true,
     "**/node_modules": true,
-    "**/node_modules/": true,
+    "**/node_modules/": true
   },
   "files.watcherExclude": {
     "**/node_modules/": true,
-    "**/mongo/db": true,
+    "**/mongo/db": true
   },
   "search.exclude": {
     "**/node_modules": true,
-    "**/mongo/db": true,
+    "**/mongo/db": true
   },
   "window.menuBarVisibility": "toggle",
   "redhat.telemetry.enabled": false,
+  "editor.unicodeHighlight.allowedLocales": {
+    "fr": true
+  },
+  "editor.guides.indentation": true,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "[typescript]": {},
 }

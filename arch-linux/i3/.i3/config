@@ -35,12 +35,8 @@ bindsym $mod+Return exec xterm
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
+# start dmenu (program launcher)
 bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
@@ -181,13 +177,14 @@ bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 bindsym --release Shift+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pactl get-default-sink) +2% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pactl get-default-sink) -2% #decrease sound volume
+bindsym XF86AudioMute exec pactl set-sink-mute $(pactl get-default-sink) toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec ~/.dotfile_scripts/backlightadjust.sh + 
-bindsym XF86MonBrightnessDown exec ~/.dotfile_scripts/backlightadjust.sh -
+# XPS only
+#bindsym XF86MonBrightnessUp exec ~/.dotfile_scripts/backlightadjust.sh + 
+#bindsym XF86MonBrightnessDown exec ~/.dotfile_scripts/backlightadjust.sh -
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -195,8 +192,13 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# Network menu
+bindsym $mod+n exec xterm -e nmtui
+
 # Configure screens, needs to be run after a display is connected or disconnected over thunderbolt. TODO: use a udev rule to make this automatic
-bindsym $mod+m exec xrandr --output eDP-1 --auto --output DP-1 --auto --above eDP-1
+#bindsym $mod+m exec xrandr --output eDP-1 --auto --output DP-1 --auto --above eDP-1 #XPS
+bindsym $mod+m exec xrandr --output eDP --auto --output HDMI-A-0 --auto --above eDP #T14
+
 
 # Start i3bar to display a workspace bar and i3status
 bar {
