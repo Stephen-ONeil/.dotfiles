@@ -138,7 +138,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exit
 
 # lock screen and suspend in to hibernate
-bindsym $mod+Shift+s exec i3lock && systemctl suspend-then-hibernate
+# Diabled, never use this and often accidentally hit this key combo while trying to switch an i3 pane to fullscreen, ha
+#bindsym $mod+Shift+s exec i3lock && systemctl suspend-then-hibernate
 
 # lock screen and hibernate
 bindsym $mod+Shift+h exec i3lock && systemctl hibernate
